@@ -1,0 +1,117 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Test</title>
+	<meta http-equiv="content-type" content="text/html">
+</head>
+<body>
+	
+	<script>
+  function onVidyoClientLoaded(status) {
+    /*switch (status.state) {
+      case "READY": */   // The library is operating normally
+
+      if (status.state=="READY") {
+      console.log("ready");
+        VC.CreateVidyoConnector({
+		  viewId: "renderer",                                  // null indicates custom layout
+		  viewStyle: "VIDYO_CONNECTORVIEWSTYLE_Default", // n/a for custom layout 
+		  remoteParticipants: 15,                        // n/a for custom layout 
+		  logFileFilter: "warning all@VidyoConnector info@VidyoClient",
+		  logFileFilter: "error",
+		  logFileName: "",
+		  userData: ""
+		}).then(function(vc) {
+		  vidyoConnector = vc;
+		  console.log("on");
+		}).catch(function(error) {
+		  
+		});
+       
+      /*case "RETRYING":     // The library operating is temporarily paused
+        break;
+      case "FAILED":       // The library operating has stopped
+        break;
+      case "FAILEDVERSION":// The version of the Javascript library does not match the plugin
+        status.plugInVersion; // The Version of the plugin currently installed
+        status.jsVersion;     // The Version of the Javascript library loaded
+        break;
+      case "NOTAVAILABLE": // The library is not available
+        break;*/
+    }
+   /* status.downloadType;                       // Available download types with possible values of "MOBILE" "PLUGIN" "APP"
+    status.downloadPathApp;                    // Path to the application installer for the app which could be invoked with a protocol handler
+    status.downloadPathPlugIn;                 // Path to the Plugin that can be installed
+    status.downloadPathWebRTCExtensionChrome;  // Path to the optional Chrome extension required for Screen Sharing in WebRTC
+    status.downloadPathWebRTCExtensionFirefox; // Path to the optional Firefox extension required for Screen Sharing in WebRTC
+    return true; */// Return true to reload the plugins if not available
+  }
+</script>
+<script type="text/javascript" src="https://static.vidyo.io/4.1.24.15/javascript/VidyoClient/VidyoClient.js?onload=onVidyoClientLoaded"></script>
+<h3>hello</h3>
+<div id="renderer"></div>
+</body>
+</html> -->
+
+
+
+<html>
+<head>
+  <title>Connect | Video chat </title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+</head>
+<body>
+  <script>
+  var vidyoConnector;
+
+   // Callback method when VidyoIO is done loading (pointer to this method is passed in the onload parameter while including the
+   // VidyoClient.js file)
+    function onVidyoClientLoaded(status) {
+      console.log("VidyoClient load state - " + status.state);
+      if (status.state == "READY") {
+        VC.CreateVidyoConnector({
+          viewId:"renderer", // Div ID where the composited video will be rendered, see VidyoConnector.html;
+          viewStyle:"VIDYO_CONNECTORVIEWSTYLE_Default", // Visual style of the composited renderer
+          remoteParticipants:10, // Maximum number of participants to render
+          logFileFilter:"error",
+          logFileName:"",
+          userData:""
+        }).then(function (vc) {
+          console.log("Create success");
+          vidyoConnector = vc;
+        }).catch(function(error){
+
+        });
+      }
+    }
+
+    function joinCall(){
+      // To join a video conference call Connect method
+      vidyoConnector.Connect({
+        host:"prod.vidyo.io",  // Server name, for most production apps it will be prod.vidyo.io
+        token:"cHJvdmlzaW9uAHVzZXIxQDJiZDRjNi52aWR5by5pbwA2MzcxMjI1MjUzNQAAMjllNmY2NTJlZmNkNzM2YzJhOWM2MjdkMTkwNDBhNWJjZWE4MjdjNDgxYTFjZTQzMTJlZmEyZGY2MGNjMzExMTg4ZDI1M2I3MDBmNTY3MDY1ZTAzNGMwY2Y5M2YyNWQz",          // Add generated token (https://developer.vidyo.io/documentation/4-1-16-8/getting-started#Tokens)
+        displayName:"Connect",  // Display name
+        resourceId:"demoRoom", // Room name
+        onSuccess: function(){
+          console.log("Connected!! YAY!");
+        },
+        onFailure: function(reason){
+          console.error("Connection failed");
+        },
+        onDisconnected: function(reason) {
+          console.log(" disconnected - " + reason);
+        }
+      })
+    }
+
+  </script>
+
+  <script src="https://static.vidyo.io/latest/javascript/VidyoClient/VidyoClient.js?onload=onVidyoClientLoaded"></script>
+ <h3>Video Chat</h3>
+ <button onclick="joinCall()">Connect</button>
+
+ <div id="renderer"></div>
+</body>
+</html>
+
