@@ -1,3 +1,9 @@
+<h3>Project Details<h3/>
+    A Social networking site for AIUB . No registeration needed. Login using portal ID and Password. It's still in beta version. Many more new features to come.
+    Project Partner : <a href="https://github.com/sakibRex"> Ahmed Shahriar Sakib <a/>
+
+
+
 <p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
 
 <p align="center">
