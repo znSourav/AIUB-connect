@@ -1,9 +1,3 @@
-<h3>Project Details<h3/>
-    A Social networking site for AIUB . No registeration needed. Login using portal ID and Password. It's still in beta version. Many more new features to come.
-    </br>
-    Project Partner : <a href="https://github.com/sakibRex"> Ahmed Shahriar Sakib <a/>
-
-
 
 <p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
 
@@ -13,6 +7,11 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
 </p>
+
+<h3>Project Details<h3/>
+    A Social networking site for AIUB . No registeration needed. Login using portal ID and Password. It's still in beta version. Many more new features to come.
+    </br>
+    Project Partner : <a href="https://github.com/sakibRex"> Ahmed Shahriar Sakib <a/>
 
 ## About Laravel
 
