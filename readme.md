@@ -12,7 +12,6 @@
     A Social networking site for AIUB . No registeration needed. Login using portal ID and Password. It's still in beta version. Many more new features to come.
     </br>
     Project Partner : <a href="https://github.com/sakibRex"> Ahmed Shahriar Sakib <a/>
-    
     <h2>Screenshots</h2>
     <img src="https://i.imgur.com/cXdk7jz.png" align="center" alt="s1" />
 
